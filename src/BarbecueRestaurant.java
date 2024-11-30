@@ -1,7 +1,9 @@
 /**
  * 父类
  */
-class Base {
+abstract class Base implements Runnable {
+	public int id;
+	public String name;
 	//餐厅桌子数量
 	public static int[] NumberOfTables = new int[Constants.NUMBER_OF_TABLES];
 	
@@ -12,8 +14,14 @@ class Base {
  * 烧烤师傅
  */
 class GrillMaster extends Base {
-	public GrillMaster() {
-		
+	public GrillMaster(String name, int id) {
+		this.name = name;
+		this.id = id;
+	}
+	
+	@Override
+	public void run() {
+		System.out.println("GrillMaster " + this.id + "号 " + this.name);
 	}
 }
 
@@ -21,8 +29,14 @@ class GrillMaster extends Base {
  * 顾客
  */
 class Customer extends Base {
-	public Customer() {
-		
+	public Customer(String name, int id) {
+		this.name = name;
+		this.id = id;
+	}
+	
+	@Override
+	public void run() {
+		System.out.println("Customer " + this.id + "号 " + this.name);
 	}
 }
 
@@ -49,7 +63,7 @@ public class BarbecueRestaurant {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+		init();
 	}
 	
 	
@@ -62,7 +76,10 @@ public class BarbecueRestaurant {
 	/**
 	 * 初始化
 	 */
-	public void init() {
-		
+	public static void init() {
+		Thread grillMaster1 = new Thread(new GrillMaster("Matinal", 1));
+		Thread customer1 = new Thread(new Customer("Matinal", 2));
+		grillMaster1.start();
+		customer1.start();
 	}
 }
