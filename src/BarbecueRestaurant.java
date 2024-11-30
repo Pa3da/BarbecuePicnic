@@ -10,14 +10,14 @@ abstract class Base implements Runnable {
 	public int id;
 	public String name;
 	//餐厅桌子数量
-	//public static int[] numberOfTables = new int[Constants.NUMBER_OF_TABLES];
+	public static int[] numberOfTables = new int[Constants.NUMBER_OF_TABLES];
 	//数组
 	public static int[][] arrayOfPlates = new int[Constants.NUMBER_OF_TABLES][Constants.CAPACITY_OF_PLATE];
 	public static int[] countOfPlates = new int[Constants.NUMBER_OF_TABLES];
 
-//	public Base() {
-//
-//	}
+	public Base() {
+
+	}
 }
 
 /**
